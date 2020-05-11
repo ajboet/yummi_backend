@@ -3,10 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Freshbitsweb\LaravelCartManager\Traits\Cartable;
 use DateTimeInterface;
 
 class Product extends Model
 {
+    use Cartable;
+    
 	/**
      * The attributes that are mass assignable.
      *

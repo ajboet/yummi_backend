@@ -37,3 +37,22 @@ Route::middleware('auth:sanctum')->group(function () {
 
 // Products
 Route::apiResource('product', 'ProductController');
+
+//ORDERS
+// Start an Order
+Route::post('order/add/{product}', 'OrdersController@startOrder');
+
+// Retrieve Order data
+Route::get('order', 'OrdersController@retrieveCart');
+
+// Delete Order
+Route::delete('order/delete', 'OrdersController@clearCart');
+
+// Order Item increment
+Route::post('order/item/increment', 'OrdersController@incrementCartItem');
+
+// Order Item decrement
+Route::post('order/item/decrement', 'OrdersController@decrementCartItem');
+
+// Order Item remove
+Route::post('order/item/remove', 'OrdersController@removeFromCart');

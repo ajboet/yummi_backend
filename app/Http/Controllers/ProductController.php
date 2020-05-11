@@ -18,7 +18,15 @@ class ProductController extends Controller
         //Fetch all Products from DB
         $products = Product::all();
         if ($products->count() > 0) {// When Products present
-            return response()->json($products, 200);
+            // Check if the cart cookie hasn't been set in client's browser
+            if (! request()->cookie('yummi_cart')) {
+                // Then send the cookie along with the Products
+                return response()->json($products, 200)
+                                 ->cookie('yummi_cart', Str::random(20));
+            } else {
+                // Send the Products
+                return response()->json($products, 200);
+            }
         }
         // No Products present in DB
         return response()->json(['message' => 'There are no products yet',], 404);
