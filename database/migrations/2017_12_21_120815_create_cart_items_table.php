@@ -14,10 +14,16 @@ class CreateCartItemsTable extends Migration
     public function up()
     {
         Schema::create('cart_items', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('cart_id')->unsigned()->index();
+            $table->id();
+            $table->unsignedBigInteger('cart_id');
+            $table->foreign('cart_id')
+                  ->references('id')
+                  ->on('carts');
             $table->string('model_type');
-            $table->integer('model_id')->unsigned();
+            $table->unsignedBigInteger('model_id');
+            $table->foreign('model_id')
+                  ->references('id')
+                  ->on('products');
             $table->string('name');
             $table->decimal('price', 8, 2);
             $table->string('image')->nullable();

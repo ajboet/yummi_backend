@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class OrdersController extends Controller
 {
-	/**
+    /**
      * Start an order / Start a shopping cart
      *
      * @param  \Illuminate\Http\Request  $request
@@ -16,7 +16,7 @@ class OrdersController extends Controller
      */
     public function startOrder(Request $request, Product $product)
     {
-    	// Get quantity from request or default it to one (1) if not present
+        // Get quantity from request or default it to one (1) if not present
         $quantity = $request->quantity ?: 1;
 
         // Check if a cart exists and have items
@@ -28,10 +28,7 @@ class OrdersController extends Controller
             cart()->add($product, $quantity);
         }
 
-        return response()->json([
-            'amounts' => cart()->data(),
-            'items' => cart()->items()
-        ], 200);
+        return response()->json([cart()->toArray()], 200);
     }
 
     /**
@@ -41,14 +38,7 @@ class OrdersController extends Controller
      */
     public function retrieveCart()
     {
-    	if (cart()->isEmpty()) {
-    		return response()->noContent();
-    	} else {
-            return response()->json([
-                'amounts' => cart()->data(),
-                'items' => cart()->items()
-            ], 200);
-    	}
+        return response()->json([cart()->toArray()], 200);
     }
 
     /**
@@ -70,7 +60,7 @@ class OrdersController extends Controller
      */
     public function incrementCartItem(Request $request)
     {
-    	$request->validate([
+        $request->validate([
             'cartItemIndex' => 'required|numeric|integer',
         ]);
 
@@ -85,7 +75,7 @@ class OrdersController extends Controller
      */
     public function decrementCartItem(Request $request)
     {
-    	$request->validate([
+        $request->validate([
             'cartItemIndex' => 'required|numeric|integer',
         ]);
 
@@ -100,7 +90,7 @@ class OrdersController extends Controller
      */
     public function removeFromCart(Request $request)
     {
-    	$request->validate([
+        $request->validate([
             'cartItemIndex' => 'required|numeric|integer',
         ]);
 
