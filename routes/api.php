@@ -34,3 +34,6 @@ Route::middleware('auth:sanctum')->group(function () {
 	Route::put('/update', 'UserController@update');
 
 });
+
+// Products
+Route::apiResource('product', 'ProductController');
