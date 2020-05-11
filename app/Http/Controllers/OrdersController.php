@@ -28,7 +28,7 @@ class OrdersController extends Controller
             cart()->add($product, $quantity);
         }
 
-        return response()->json([cart()->toArray()], 200);
+        return response()->json(cart()->toArray(), 200);
     }
 
     /**
@@ -38,7 +38,7 @@ class OrdersController extends Controller
      */
     public function retrieveCart()
     {
-        return response()->json([cart()->toArray()], 200);
+        return response()->json(cart()->toArray(), 200);
     }
 
     /**
