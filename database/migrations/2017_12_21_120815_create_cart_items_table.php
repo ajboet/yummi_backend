@@ -17,13 +17,13 @@ class CreateCartItemsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('cart_id');
             $table->foreign('cart_id')
-                  ->references('id')
-                  ->on('carts');
+                ->references('id')
+                ->on('carts');
             $table->string('model_type');
             $table->unsignedBigInteger('model_id');
             $table->foreign('model_id')
-                  ->references('id')
-                  ->on('products');
+                ->references('id')
+                ->on('products');
             $table->string('name');
             $table->decimal('price', 8, 2);
             $table->string('image')->nullable();
@@ -39,6 +39,8 @@ class CreateCartItemsTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('cart_items');
+        Schema::enableForeignKeyConstraints();
     }
 }
