@@ -18,8 +18,8 @@ class CreateCartsTable extends Migration
             $table->string('cookie');
             $table->unsignedBigInteger('auth_user')->nullable();
             $table->foreign('auth_user')
-                  ->references('id')
-                  ->on('users');
+                ->references('id')
+                ->on('users');
             $table->decimal('subtotal', 8, 2);
             $table->decimal('discount', 8, 2);
             $table->decimal('discount_percentage', 5, 2);
@@ -41,6 +41,8 @@ class CreateCartsTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('carts');
+        Schema::enableForeignKeyConstraints();
     }
 }
