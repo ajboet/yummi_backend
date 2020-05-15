@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6558f74828bca9ebecac73d90cea4b1a",
+    "content-hash": "be5f1f7eda7b81196c8b5569cb64fd52",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -464,6 +464,59 @@
             "time": "2020-02-22T01:51:47+00:00"
         },
         {
+            "name": "freshbitsweb/laravel-cart-manager",
+            "version": "v1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/freshbitsweb/laravel-cart-manager.git",
+                "reference": "6c9d1d7847271d933768fadfe03c5f6810cb09ba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/freshbitsweb/laravel-cart-manager/zipball/6c9d1d7847271d933768fadfe03c5f6810cb09ba",
+                "reference": "6c9d1d7847271d933768fadfe03c5f6810cb09ba",
+                "shasum": ""
+            },
+            "require": {
+                "ext-intl": "*",
+                "illuminate/support": "5.5.*|5.6.*|5.7.*|5.8.*|^6.0|^7.0",
+                "php": "^7.2.5"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.3.1",
+                "orchestra/testbench": "5.*.*",
+                "phpunit/phpunit": "^8.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Freshbitsweb\\LaravelCartManager\\CartManagerServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Freshbitsweb\\LaravelCartManager\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Gaurav Makhecha",
+                    "email": "info@freshbits.in"
+                }
+            ],
+            "description": "Managing the cart of your Laravel application is a breeze",
+            "time": "2020-03-04T13:26:27+00:00"
+        },
+        {
             "name": "fruitcake/laravel-cors",
             "version": "v1.0.6",
             "source": {
@@ -877,6 +930,66 @@
                 "laravel"
             ],
             "time": "2020-05-06T15:36:00+00:00"
+        },
+        {
+            "name": "laravel/sanctum",
+            "version": "v2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/sanctum.git",
+                "reference": "0c76899fbee4b501a2ddbd39c84e691a56d4da4f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/sanctum/zipball/0c76899fbee4b501a2ddbd39c84e691a56d4da4f",
+                "reference": "0c76899fbee4b501a2ddbd39c84e691a56d4da4f",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "illuminate/contracts": "^6.9|^7.0",
+                "illuminate/database": "^6.9|^7.0",
+                "illuminate/support": "^6.9|^7.0",
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0",
+                "orchestra/testbench": "^4.0|^5.0",
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Sanctum\\SanctumServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Sanctum\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Laravel Sanctum provides a featherweight authentication system for SPAs and simple APIs.",
+            "keywords": [
+                "auth",
+                "laravel",
+                "sanctum"
+            ],
+            "time": "2020-05-05T18:20:44+00:00"
         },
         {
             "name": "laravel/tinker",
