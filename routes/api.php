@@ -33,6 +33,9 @@ Route::middleware('auth:sanctum')->group(function () {
 	// User Update
 	Route::put('/update', 'UserController@update');
 
+	// Order Record List
+	Route::get('order_record', 'OrderRecordController@get');
+
 });
 
 // Products
@@ -56,3 +59,6 @@ Route::post('order/item/decrement', 'OrdersController@decrementCartItem');
 
 // Order Item remove
 Route::post('order/item/remove', 'OrdersController@removeFromCart');
+
+// Confirm Order
+Route::post('confirm_order', 'OrderRecordController@confirm');

@@ -5,7 +5,7 @@ return [
     'driver' => Freshbitsweb\LaravelCartManager\Drivers\DatabaseDriver::class,
 
     // The authentication guard that should be used to identify the logged in customer
-    'auth_guard' => 'api',
+    'auth_guard' => 'sanctum',
 
     // Shipping charges are applied on order amount (subtotal - discount)
     'shipping_charges' => 10,
@@ -33,7 +33,7 @@ return [
     'locale' => 'en_US',
 
     // Currency to display numbers with symbols - The 3-letter ISO 4217 currency code
-    'currency' => 'USD',
+    'currency' => 'EUR',
 
     // For Database driver only: Number of hours for which the cart data is considered valid
     // You can run/schedule the lcm_cart:clear command to remove old/invalid data
