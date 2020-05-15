@@ -30,10 +30,10 @@ Route::middleware('auth:sanctum')->group(function () {
 	// User SignOut
 	Route::get('/logout', 'UserController@signOut');
 
-	// User Update
-	Route::put('/update', 'UserController@update');
+	// User Info Update
+	Route::patch('/update', 'UserController@update');
 
-	// Order Record List
+	// User Order Record List
 	Route::get('order_record', 'OrderRecordController@get');
 
 });
