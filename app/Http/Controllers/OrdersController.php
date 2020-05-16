@@ -49,7 +49,7 @@ class OrdersController extends Controller
     public function clearCart()
     {
         cart()->clear();
-        return response()->json(['success' => 'Successfully deleted shopping cart'], 200);
+        return response()->json(['message' => 'Successfully deleted shopping cart.'], 200);
     }
 
     /**
