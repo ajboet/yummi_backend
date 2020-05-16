@@ -78,6 +78,8 @@ The following headers must be present in every request to all endpoints:
 | password_confirmation |                        "                    |
 | cellphone_number      |                        "                    |
 | full_address          |                        "                    |
+| currency_iso_code     | required with currency_rate                 |
+| currency_rate         | required with currency_iso_code             |
 
 
 ### GET
