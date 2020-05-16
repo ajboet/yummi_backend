@@ -34,7 +34,7 @@ class ProductSeeder extends Seeder
                 'name' => 'Pepperoni',
                 'details' => 'Ingredients: tomato sauce, mozzarella, and pepperoni',
                 'price' => 21.5,
-                'image' => '',
+                'image' => 'https://cdn.tasteatlas.com/images/dishes/b05a0af72ad845f3a6abe16143d7853a.jpg',
             ],
             [
                 'name' => 'Chicago-style deep dish',
