@@ -64,3 +64,9 @@ php artisan db:seed
 ```
 php artisan serve
 ```
+
+* To run project's Feature Testing:
+
+```
+php artisan test
+```
