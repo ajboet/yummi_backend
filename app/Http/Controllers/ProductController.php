@@ -18,27 +18,13 @@ class ProductController extends Controller
         //Fetch all Products from DB
         $products = Product::all();
         if ($products->count() > 0) {// When Products present
-            // Check if the cart cookie hasn't been set in client's browser
-            if (! request()->cookie('yummi_cart')) {
-                $cookie_name = config('cart_manager.cookie_name');
-                $cookie_value = Str::random(20);
-                $cookie_expires = config('cart_manager.cookie_lifetime');
-                // Then send the cookie along with the Products
-                return response()->json([
-                    'products' => $products,
-                    'cookie' => [
-                        'name' => $cookie_name,
-                        'value' => $cookie_value,
-                        'expires' => $cookie_expires
-                    ]
-                ], 200)
-                ->header('Access-Control-Allow-Credentials', True)
-                // Not an API working approach
-                ->cookie($cookie_name, $cookie_value, $cookie_expires, '', 'aj-yummi-frontend.herokuapp.com', False, False);
-            } else {
-                // Send the Products
-                return response()->json($products, 200);
+            $response = [];
+            if (request()->headers->has('guest_user_token')) {
+                // Send the guest auth
+                $response['token'] = request()->header('guest_user_token');
             }
+            $response['products'] = $products;
+            return response()->json($response, 200);
         }
         // No Products present in DB
         return response()->json(['message' => 'There are no products yet',], 404);

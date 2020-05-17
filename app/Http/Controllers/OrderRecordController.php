@@ -48,12 +48,18 @@ class OrderRecordController extends Controller
         }
 
         $user = auth('sanctum')->user();
-        // If no User logged in, request registration info
-        if (! $user) {
+        $is_guest = False;
+        $check1 = explode('_', $user->email)[0];
+        $check2 = explode('@', $user->email);
+        if ($check1 == 'guest' && array_pop($check2) == 'mail.com') {
+            $is_guest = True;// It's a Guest User
+        }
+        // If User is Guest, request registration info
+        if ($is_guest) {
             $request->validate([
                 'name' => 'required|string|min:3',
                 'email' => 'required|string|email|unique:users',
-                'password' => 'required|string|confirmed',
+                'password' => 'sometimes|string|confirmed',
                 'cellphone_number' => 'required|unique:users',
                 'full_address' => 'required|string',
                 'currency_iso_code' => 'required_with:currency_rate|string|size:3',
@@ -61,18 +67,15 @@ class OrderRecordController extends Controller
             ]);
         }
 
-
         DB::beginTransaction(); // Disable autocommit
         try {
-            // If no User logged in, create a new one
-            if (! $user) {
-                $user = new User();// Another way to create User
-                $user->fill($request->except(['password']));
-                $user->email_verified_at = now();
+            $user->fill($request->except(['password', 'currency_iso_code', 'currency_rate']));
+            if ($request->has('password')) {
                 $user->password = bcrypt($request->password);
-                $user->save();
             }
-
+            if($user->isDirty()){
+                $user->update();
+            }
 
             // Convert Cart data into snake_case
             $cart = [];
