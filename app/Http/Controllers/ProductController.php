@@ -32,8 +32,9 @@ class ProductController extends Controller
                         'expires' => $cookie_expires
                     ]
                 ], 200)
+                ->header('Access-Control-Allow-Credentials', True)
                 // Not an API working approach
-                ->cookie($cookie_name, $cookie_value, $cookie_expires, '', '', False, False);
+                ->cookie($cookie_name, $cookie_value, $cookie_expires, '', 'aj-yummi-frontend.herokuapp.com', False, False);
             } else {
                 // Send the Products
                 return response()->json($products, 200);
