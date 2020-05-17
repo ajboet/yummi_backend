@@ -39,8 +39,9 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 // Products
-Route::apiResource('product', 'ProductController');
-
+Route::apiResource('product', 'ProductController')->names([
+    'index' => 'index.product'
+]);
 //ORDERS
 // Start an Order
 Route::post('order/add/{product}', 'OrdersController@startOrder');
