@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\OrderRecord;
-use App\OrderRecordItem;
-use App\User;
+use App\Models\OrderRecord;
+use App\Models\OrderRecordItem;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -86,6 +86,7 @@ class OrderRecordController extends Controller
             // Store the Order Record
             $order = new OrderRecord();
             $order->fill($cart);
+            $order->status = 'pending';
             $order->user_id = $user->id;
             
             if ($request->has('currency_iso_code')) {

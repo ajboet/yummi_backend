@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -139,7 +139,7 @@ class OrderRecord extends Model
     */
     public function items()
     {
-        return $this->hasMany('App\OrderRecordItem');
+        return $this->hasMany('App\Models\OrderRecordItem');
     }
 
     /**
